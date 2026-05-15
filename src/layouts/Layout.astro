@@ -1,23 +1,422 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import { Icon } from 'astro-icon/components';
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+export interface Props {
+  title: string;
+  currentPage?: string;
+}
+
+const { title, currentPage = '' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | Handworks</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --color-teal: #0e4c5a;
+        --color-teal-dark: #0a3a45;
+        --color-teal-light: #1a6678;
+        --color-pink: #d4798c;
+        --color-pink-light: #e8a3b1;
+        --color-pink-soft: #f4d5dc;
+        --color-bg: #faf8f5;
+        --color-bg-soft: #f3efe9;
+        --color-section-gray: #f1ede7;
+        --color-text: #2a2a2a;
+        --color-text-muted: #6b6b6b;
+        --font-serif: 'Cormorant Garamond', Georgia, serif;
+        --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-sans);
+        background: var(--color-bg);
+        color: var(--color-text);
+        min-height: 100vh;
+        line-height: 1.6;
+      }
+
+      /* NAVBAR */
+      .navbar {
+        background: rgba(250, 248, 245, 0.92);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 1px solid rgba(14, 76, 90, 0.06);
+      }
+
+      .nav-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 1.25rem 2.5rem;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        text-decoration: none;
+        color: var(--color-teal);
+        font-family: var(--font-serif);
+        font-size: 1.6rem;
+        font-weight: 600;
+        justify-self: start;
+      }
+
+      .logo-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        stroke-width: 1.75;
+        color: var(--color-teal);
+      }
+
+      .footer-brand .logo-icon {
+        color: #fff;
+      }
+
+      .logo:hover {
+        color: var(--color-teal-light);
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: 2.5rem;
+        list-style: none;
+        justify-self: center;
+      }
+
+      .nav-menu li a {
+        text-decoration: none;
+        color: var(--color-text);
+        font-weight: 500;
+        font-size: 0.95rem;
+        padding: 0.4rem 0;
+        position: relative;
+        transition: color 0.3s;
+        white-space: nowrap;
+      }
+
+      .nav-menu li a:hover {
+        color: var(--color-teal);
+      }
+
+      .nav-menu li a::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0%;
+        height: 2px;
+        background: var(--color-pink);
+        transition: width 0.3s;
+      }
+
+      .nav-menu li a:hover::after,
+      .nav-menu li a.active::after {
+        width: 100%;
+      }
+
+      .nav-menu li a.active {
+        color: var(--color-teal);
+      }
+
+      .nav-right {
+        justify-self: end;
+      }
+
+      .btn-login {
+        background: linear-gradient(135deg, var(--color-teal) 0%, var(--color-teal-light) 100%);
+        color: #fff !important;
+        text-decoration: none;
+        padding: 0.7rem 1.8rem;
+        border-radius: 999px;
+        font-weight: 500;
+        font-size: 0.95rem;
+        display: inline-block;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .btn-login:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(14, 76, 90, 0.25);
+      }
+
+      /* MAIN — full width container; sections control their own width */
+      .main-content {
+        min-height: calc(100vh - 180px);
+      }
+
+      /* FOOTER */
+      .site-footer {
+        background: var(--color-teal-dark);
+        color: rgba(255, 255, 255, 0.8);
+        padding: 4rem 0 1.5rem;
+        margin-top: 4rem;
+      }
+
+      .footer-inner {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 2.5rem;
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+        gap: 3rem;
+      }
+
+      .footer-brand .logo {
+        color: #fff;
+        margin-bottom: 1rem;
+      }
+
+      .footer-brand p {
+        font-size: 0.9rem;
+        margin-bottom: 1.25rem;
+        max-width: 280px;
+      }
+
+      .footer-social {
+        display: flex;
+        gap: 0.75rem;
+      }
+
+      .footer-social a {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.95rem;
+        transition: background 0.3s;
+      }
+
+      .footer-social a:hover {
+        background: var(--color-pink);
+      }
+
+      .footer-col h4 {
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 1.25rem;
+      }
+
+      .footer-col ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+
+      .footer-col a,
+      .footer-col li {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.3s;
+      }
+
+      .footer-col a:hover {
+        color: var(--color-pink-light);
+      }
+
+      .footer-contact li {
+        display: flex;
+        gap: 0.6rem;
+        align-items: flex-start;
+      }
+
+      .footer-bottom {
+        max-width: 1280px;
+        margin: 3rem auto 0;
+        padding: 1.5rem 2.5rem 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.5);
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .footer-bottom-links {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      .footer-bottom-links a {
+        color: rgba(255, 255, 255, 0.5);
+        text-decoration: none;
+      }
+
+      .footer-bottom-links a:hover {
+        color: var(--color-pink-light);
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 900px) {
+        .nav-container {
+          grid-template-columns: 1fr 1fr;
+          row-gap: 1rem;
+        }
+
+        .nav-menu {
+          grid-column: 1 / -1;
+          order: 3;
+          gap: 1.5rem;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .footer-inner {
+          grid-template-columns: 1fr 1fr;
+          gap: 2rem;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .nav-container {
+          padding: 1rem 1.25rem;
+        }
+
+        .nav-menu {
+          gap: 1rem;
+        }
+
+        .nav-menu li a {
+          font-size: 0.85rem;
+        }
+
+        .btn-login {
+          padding: 0.55rem 1.3rem;
+          font-size: 0.85rem;
+        }
+
+        .footer-inner {
+          grid-template-columns: 1fr;
+          padding: 0 1.25rem;
+        }
+
+        .footer-bottom {
+          padding: 1.5rem 1.25rem 0;
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="/" class="logo">
+          <Icon name="lucide:scissors" class="logo-icon" aria-hidden="true" />
+          <span class="logo-text">Handworks</span>
+        </a>
+
+        <ul class="nav-menu">
+          <li><a href="/" class={currentPage === 'home' ? 'active' : ''}>Home</a></li>
+          <li><a href="/about" class={currentPage === 'about' ? 'active' : ''}>About</a></li>
+          <li><a href="/services" class={currentPage === 'services' ? 'active' : ''}>Services</a></li>
+          <li><a href="/products" class={currentPage === 'products' ? 'active' : ''}>Products</a></li>
+          <li><a href="/differentiators" class={currentPage === 'differentiators' ? 'active' : ''}>Differentiators</a></li>
+          <li><a href="/contact" class={currentPage === 'contact' ? 'active' : ''}>Contact</a></li>
+        </ul>
+
+        <div class="nav-right">
+          <a href="/login" class="btn-login">Login</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="/" class="logo">
+            <Icon name="lucide:scissors" class="logo-icon" aria-hidden="true" />
+            <span class="logo-text">Handworks</span>
+          </a>
+          <p>Boutique-level children's apparel manufacturer since 2004. Crafting premium garments with exceptional quality and care.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Instagram">ig</a>
+            <a href="#" aria-label="LinkedIn">in</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/services">Services</a></li>
+            <li><a href="/products">Products</a></li>
+            <li><a href="/differentiators">Why Us</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Our Services</h4>
+          <ul>
+            <li>Design &amp; Development</li>
+            <li>Materials &amp; Sourcing</li>
+            <li>Manufacturing</li>
+            <li>Compliance &amp; Quality</li>
+            <li>Logistics &amp; Delivery</li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <ul class="footer-contact">
+            <li>El Salvador, Central America</li>
+            <li>+503 1234 5678</li>
+            <li>info@handworks.com</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Handworks. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

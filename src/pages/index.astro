@@ -1,11 +1,735 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import { Icon } from 'astro-icon/components';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Home" currentPage="home">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="eyebrow eyebrow-pink">EST. 2001</p>
+        <h1 class="hero-title">Handworks</h1>
+        <p class="hero-tagline">Boutique Manufacturing for Children's Apparel</p>
+        <p class="hero-description">
+          Crafting premium garments with exceptional quality, creative design,
+          and industry-leading lead times since 2001.
+        </p>
+        <div class="hero-actions">
+          <a href="#services" class="btn-primary">Explore Our Craft &rarr;</a>
+          <a href="/contact" class="btn-outline">Request a Quote</a>
+        </div>
+      </div>
+      <div class="hero-image-wrap">
+        <div class="hero-image">
+  <img src="/images/bordado.jpg" alt="Children's Apparel Manufacturing" />
+</div>
+        <div class="hero-badge">
+          <div class="hero-badge-icon"><Icon name="lucide:sparkles" aria-hidden="true" /></div>
+          <div>
+            <div class="hero-badge-num">20+</div>
+            <div class="hero-badge-label">Years of Excellence</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <section class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat">
+        <div class="stat-num">20+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">40K</div>
+        <div class="stat-label">Garments/Month</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Quality Control</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">25+</div>
+        <div class="stat-label">Team Members</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about">
+    <div class="about-inner">
+      <div class="about-image">
+      <img src="/images/perchero.jpg" alt="Our sewing facility" />
+    </div>
+      <div class="about-text">
+        <p class="eyebrow eyebrow-pink">ABOUT US</p>
+        <h2 class="section-title">Crafting Childhood Dreams Since 2001</h2>
+        <p>
+          Founded by Alessandra Origgi, Handworks began as a cutting-only factory
+          and evolved into a multi-style cutting and sewing establishment. Inspired
+          by her children, Alessandra launched Zucchi Kids, showcasing our commitment
+          to excellent quality and creative design.
+        </p>
+        <p>
+          Today, we combine handcrafted embroidery expertise with modern manufacturing
+          processes to deliver premium children's apparel that exceeds expectations.
+        </p>
+        <a href="/about" class="link-arrow">Read Our Story &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="services-inner">
+      <div class="section-head">
+        <p class="eyebrow eyebrow-pink">OUR SERVICES</p>
+        <h2 class="section-title">End-to-End Manufacturing Solutions</h2>
+        <p class="section-sub">
+          From first sketches to final production, we bring your collections to life
+          with exceptional craftsmanship and care.
+        </p>
+      </div>
+      <div class="services-grid">
+        <article class="service-card">
+          <div class="service-icon"><Icon name="lucide:pencil" aria-hidden="true" /></div>
+          <h3>Design &amp; Development</h3>
+          <p>From concept to tech packs, we bring your vision to life with expert design support.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-icon"><Icon name="lucide:clipboard-list" aria-hidden="true" /></div>
+          <h3>Premium Manufacturing</h3>
+          <p>High-end multi-style production with specialized children's clothing construction.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-icon"><Icon name="lucide:shirt" aria-hidden="true" /></div>
+          <h3>Quality &amp; Compliance</h3>
+          <p>U.S. compliance expertise with multi-stage quality control processes.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-icon"><Icon name="lucide:truck" aria-hidden="true" /></div>
+          <h3>Global Logistics</h3>
+          <p>Efficient lead time management with flexible shipping solutions worldwide.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products">
+    <div class="products-inner">
+      <div class="products-head">
+        <div>
+          <p class="eyebrow eyebrow-pink">OUR PRODUCTS</p>
+          <h2 class="section-title">Premium Collections</h2>
+        </div>
+        <a href="/products" class="link-arrow">View All Products &rarr;</a>
+      </div>
+      <div class="products-grid">
+        <div class="product-card">
+      <img src="/images/newborn.jpg" alt="Newborn Collection" />
+      <span class="product-label">Newborn & Infant</span>
+    </div>
+    <div class="product-card">
+      <img src="/images/boy.jpg" alt="Boys Collection" />
+      <span class="product-label">Boys Collection</span>
+    </div>
+    <div class="product-card">
+      <img src="/images/girl.jpg" alt="Girls Collection" />
+      <span class="product-label">Girls Collection</span>
+    </div>
+      </div>
+      <div class="products-stats">
+        <div class="prod-stat prod-stat-teal">
+          <div class="prod-stat-num">40,000</div>
+          <div class="prod-stat-label">Garments per month</div>
+        </div>
+        <div class="prod-stat prod-stat-pink">
+          <div class="prod-stat-num">1,500-2,500</div>
+          <div class="prod-stat-label">Garments daily</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="why-us">
+    <div class="why-inner">
+      <div class="why-text">
+        <p class="eyebrow eyebrow-pink">WHY CHOOSE US</p>
+        <h2 class="section-title">What Sets Us Apart</h2>
+        <p>
+          With over two decades of experience, we've refined every aspect of our
+          manufacturing process to deliver unparalleled quality and service.
+        </p>
+        <ul class="why-list">
+          <li><Icon name="lucide:check" class="why-check" aria-hidden="true" />El Salvador: A Strategic Textile Hub</li>
+          <li><Icon name="lucide:check" class="why-check" aria-hidden="true" />Consistent Premium Quality</li>
+          <li><Icon name="lucide:check" class="why-check" aria-hidden="true" />Relationship-Driven Manufacturing</li>
+          <li><Icon name="lucide:check" class="why-check" aria-hidden="true" />Refined Production Processes</li>
+          <li><Icon name="lucide:check" class="why-check" aria-hidden="true" />Transparent Communication</li>
+          <li><Icon name="lucide:check" class="why-check" aria-hidden="true" />In-stock Fabrics &amp; Patterns</li>
+        </ul>
+        <a href="/differentiators" class="btn-primary">Tour Our Facility &rarr;</a>
+      </div>
+      <div class="why-image">
+      <img src="/images/maquinasV.jpg" alt="Handworks Facility in El Salvador" />
+    </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="cta-inner">
+      <h2>Ready to Start Your Project?</h2>
+      <p>
+        Let's discuss how Handworks can bring your children's apparel collection to life
+        with our premium manufacturing services.
+      </p>
+      <div class="cta-actions">
+        <a href="/contact" class="btn-white">Request a Quote</a>
+        <a href="/products" class="btn-outline-white">View Products</a>
+      </div>
+    </div>
+  </section>
 </Layout>
+
+<style>
+  /* Shared */
+  .eyebrow {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .eyebrow-pink {
+    color: var(--color-pink);
+  }
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    color: var(--color-teal);
+    line-height: 1.15;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+  .section-sub {
+    color: var(--color-text-muted);
+    font-size: 1.05rem;
+    max-width: 640px;
+  }
+  .image-placeholder {
+    background: linear-gradient(135deg, #e8e2d8, #d8d0c4);
+    border: 1px dashed rgba(14, 76, 90, 0.2);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(14, 76, 90, 0.4);
+    font-size: 0.9rem;
+    font-weight: 500;
+    overflow: hidden;
+  }
+  .placeholder-label {
+    pointer-events: none;
+  }
+
+  /* Buttons */
+  .btn-primary,
+  .btn-outline,
+  .btn-white,
+  .btn-outline-white {
+    display: inline-block;
+    padding: 0.85rem 1.8rem;
+    border-radius: 999px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s;
+    border: 2px solid transparent;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--color-teal);
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background: var(--color-teal-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(14, 76, 90, 0.25);
+  }
+  .btn-outline {
+    border-color: var(--color-teal);
+    color: var(--color-teal);
+  }
+  .btn-outline:hover {
+    background: var(--color-teal);
+    color: #fff;
+  }
+  .btn-white {
+    background: #fff;
+    color: var(--color-teal);
+  }
+  .btn-white:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  .btn-outline-white {
+    border-color: rgba(255, 255, 255, 0.6);
+    color: #fff;
+  }
+  .btn-outline-white:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+  }
+  .link-arrow {
+    color: var(--color-teal);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: gap 0.3s;
+  }
+  .link-arrow:hover {
+    gap: 0.7rem;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 4rem 2.5rem 6rem;
+  }
+  .hero-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    color: var(--color-teal);
+    line-height: 1;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+  .hero-tagline {
+    font-family: var(--font-serif);
+    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+    color: var(--color-text-muted);
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+  }
+  .hero-description {
+    color: var(--color-text-muted);
+    font-size: 1.05rem;
+    max-width: 480px;
+    margin-bottom: 2rem;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .hero-image-wrap {
+    position: relative;
+    aspect-ratio: 1 / 1;
+  }
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+  background: #f0f0f0; /* Color de fondo mientras carga */
+  position: relative;
+  }
+  .hero-badge {
+    position: absolute;
+    bottom: -28px;
+    left: -28px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 12px 30px rgba(14, 76, 90, 0.12);
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+  }
+  .hero-badge-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--color-teal);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-badge-icon svg {
+    width: 22px;
+    height: 22px;
+    stroke-width: 1.75;
+  }
+  .hero-badge-num {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-teal);
+    line-height: 1;
+  }
+  .hero-badge-label {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--color-teal);
+    color: #fff;
+    padding: 3rem 2.5rem;
+  }
+  .stats-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .stat-label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  /* ABOUT */
+  .about {
+    padding: 6rem 2.5rem;
+  }
+  .about-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .about-image {
+    aspect-ratio: 4 / 3;
+    border-radius: 20px;
+    overflow: hidden;
+  background: #f0f0f0; /* Color de fondo mientras carga */
+  position: relative;
+  }
+  .about-text p {
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+  }
+  .about-text .link-arrow {
+    margin-top: 1rem;
+  }
+
+  /* SERVICES */
+  .services {
+    padding: 6rem 2.5rem;
+    background: var(--color-section-gray);
+  }
+  .services-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .section-head {
+    text-align: center;
+    margin-bottom: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  .service-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(14, 76, 90, 0.08);
+  }
+  .service-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: var(--color-teal);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+  .service-icon svg {
+    width: 26px;
+    height: 26px;
+    stroke-width: 1.75;
+  }
+  .service-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    color: var(--color-teal);
+    margin-bottom: 0.6rem;
+  }
+  .service-card p {
+    color: var(--color-text-muted);
+    font-size: 0.93rem;
+  }
+
+  /* PRODUCTS */
+  .products {
+    padding: 6rem 2.5rem;
+  }
+  .products-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .products-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2.5rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .products-head .section-title {
+    margin-bottom: 0;
+  }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .product-card {
+    aspect-ratio: 3 / 4;
+    border-radius: 16px;
+    position: relative;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s;
+    overflow: hidden;
+  background: #f0f0f0; /* Color de fondo mientras carga */
+  position: relative;
+  }
+  .product-card:hover {
+    transform: translateY(-4px);
+  }
+  .product-label {
+    color: #fff;
+    background: rgba(14, 76, 90, 0.7);
+    backdrop-filter: blur(4px);
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  .products-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .prod-stat {
+    border-radius: 16px;
+    padding: 2rem 2.5rem;
+    color: #fff;
+  }
+  .prod-stat-teal {
+    background: var(--color-teal);
+  }
+  .prod-stat-pink {
+    background: var(--color-pink);
+  }
+  .prod-stat-num {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .prod-stat-label {
+    font-size: 0.95rem;
+    opacity: 0.9;
+  }
+
+  /* WHY US */
+  .why-us {
+    padding: 6rem 2.5rem;
+    background: var(--color-section-gray);
+  }
+  .why-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .why-text > p {
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+  }
+  .why-list {
+    list-style: none;
+    margin-bottom: 2rem;
+  }
+  .why-list li {
+    padding: 0.6rem 0;
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+  }
+  .why-check {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--color-pink-soft);
+    color: var(--color-pink);
+    padding: 5px;
+    stroke-width: 2.5;
+    flex-shrink: 0;
+  }
+  .why-image {
+    aspect-ratio: 4 / 3;
+    border-radius: 20px;
+    overflow: hidden;
+  background: #f0f0f0; /* Color de fondo mientras carga */
+  position: relative;
+  }
+
+
+.hero-image img, 
+.about-image img, 
+.product-card img, 
+.why-image img {
+  width: 100%;
+  height: 96%;
+  max-width: 100%;
+  object-fit: cover; /* Esto es vital: mantiene la proporción sin deformar */
+  display: block;
+}
+
+  /* CTA */
+  .cta {
+    padding: 5rem 2.5rem;
+  }
+  .cta-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, var(--color-teal) 0%, var(--color-teal-light) 100%);
+    border-radius: 24px;
+    padding: 4rem 3rem;
+    text-align: center;
+    color: #fff;
+  }
+  .cta-inner h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  .cta-inner p {
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 620px;
+    margin: 0 auto 2rem;
+    font-size: 1.05rem;
+  }
+  .cta-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 980px) {
+    .hero-inner,
+    .about-inner,
+    .why-inner {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    .why-inner .why-image {
+      order: -1;
+    }
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .stats-inner {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+    .products-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .products-grid .product-card:nth-child(3) {
+      grid-column: 1 / -1;
+      aspect-ratio: 16 / 9;
+    }
+    .products-stats {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .hero {
+      padding: 3rem 1.25rem 5rem;
+    }
+    .about,
+    .services,
+    .products,
+    .why-us,
+    .cta {
+      padding: 4rem 1.25rem;
+    }
+    .hero-badge {
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -32px;
+      width: max-content;
+    }
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+    .products-grid {
+      grid-template-columns: 1fr;
+    }
+    .products-grid .product-card:nth-child(3) {
+      grid-column: auto;
+      aspect-ratio: 3 / 4;
+    }
+    .stats-bar {
+      padding: 2.5rem 1.25rem;
+    }
+    .cta-inner {
+      padding: 3rem 1.5rem;
+    }
+  }
+</style>

@@ -1,0 +1,640 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
+
+const milestones = [
+  { year: '2001', title: 'Foundation', description: 'Handworks founded as a cutting-only factory by Alessandra Origgi.' },
+  { year: '2006', title: 'Expansion', description: 'Evolved into multi-style cutting and sewing establishment.' },
+  { year: '2008', title: 'Zucchi Kids', description: 'Launch of our signature apparel line inspired by family.' },
+  { year: '2012', title: 'Growth', description: 'Expanded production capacity to 20,000 garments per month.' },
+  { year: '2020', title: 'Innovation', description: 'Introduced advanced embroidery techniques and technology.' },
+  { year: '2024', title: 'Today', description: 'Reaching 40,000 garments monthly with 25+ team members.' },
+];
+
+const values = [
+  { icon: 'lucide:heart', title: 'Passion for Craft', description: 'Every garment is crafted with love and attention to detail, reflecting our dedication to excellence.' },
+  { icon: 'lucide:award', title: 'Quality First', description: 'We never compromise on quality, ensuring every piece meets the highest standards.' },
+  { icon: 'lucide:users', title: 'People-Centered', description: 'Our team is our greatest asset, and we invest in their growth and well-being.', highlighted: true },
+  { icon: 'lucide:globe', title: 'Global Vision', description: "We aim to be a global leader in children's apparel manufacturing." },
+];
+
+---
+
+<Layout title="About Us" currentPage="about">
+  <!-- HERO (teal banner) -->
+  <section class="about-hero">
+    <div class="about-hero-inner">
+      <p class="eyebrow eyebrow-light">ABOUT US</p>
+      <h1 class="about-hero-title">Our Story</h1>
+      <p class="about-hero-desc">
+        From a cutting-only factory to a full-service manufacturing establishment,
+        how Handworks has been crafting excellence since 2001.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOUNDER -->
+  <section class="founder">
+    <div class="founder-inner">
+      <div class="founder-photo">
+  <img src="/images/ale.jpg" alt="Alessandra Origgi - Founder & CEO" />
+</div>
+      <div class="founder-text">
+        <p class="eyebrow eyebrow-pink">FOUNDER &amp; CEO</p>
+        <h2 class="section-title">Alessandra Origgi</h2>
+        <p>
+          Handworks was founded in July 2001 by Alessandra Origgi, a Harvard graduate
+          in Economics with a vision to transform the children's wear manufacturing industry.
+        </p>
+        <p>
+          What began as a cutting-only factory quickly evolved into a multi-style
+          cutting and sewing establishment, driven by Alessandra's foresight and
+          commitment to excellence.
+        </p>
+        <p>
+          Inspired by her own children, Alessandra launched Zucchi Kids, Handworks
+          signature apparel line. Through Zucchi Kids, Handworks showcases the
+          excellent quality, creative design, and exceptional lead times that sets
+          us apart from many local manufacturers.
+        </p>
+        <p>
+          Today, under Alessandra's leadership, Handworks continues to grow while
+          maintaining the boutique level attention to detail that sets us apart
+          from many local manufacturers.
+        </p>
+        <a href="#" class="btn-pink">Visit Zucchi Kids &rarr;</a>
+
+        <blockquote class="founder-quote">
+          <span class="quote-mark">&ldquo;</span>
+          <p>Quality is not an act, it is a habit that everything we create.</p>
+          <cite>&mdash; Alessandra Origgi, Founder &amp; CEO</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION / MISSION -->
+  <section class="vm">
+    <div class="vm-inner">
+      <article class="vm-card">
+        <div class="vm-icon"><Icon name="lucide:eye" aria-hidden="true" /></div>
+        <h3>Our Vision</h3>
+        <p>
+          Our vision is to become a global leader in the design and manufacturing of
+          children's apparel, known for our expertise in high-quality handmade embroidery.
+          We are dedicated to creating opportunities and promoting professional growth
+          for every team member at all levels.
+        </p>
+      </article>
+      <article class="vm-card vm-card-dark">
+        <div class="vm-icon"><Icon name="lucide:trophy" aria-hidden="true" /></div>
+        <h3>Our Mission</h3>
+        <p>
+          Our mission is to be a leading high-end children's clothing manufacturer,
+          passionate about handcrafted embroidery. We are committed to designing,
+          producing, and delivering premium garments on time, always striving to exceed
+          our customers' expectations.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="values">
+    <div class="values-inner">
+      <div class="section-head">
+        <p class="eyebrow eyebrow-pink">OUR VALUES</p>
+        <h2 class="section-title">What We Stand For</h2>
+      </div>
+      <div class="values-grid">
+        {values.map((v) => (
+          <article class={`value-card${v.highlighted ? ' value-card-dark' : ''}`}>
+            <div class="value-icon"><Icon name={v.icon} aria-hidden="true" /></div>
+            <h3>{v.title}</h3>
+            <p>{v.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- MILESTONES -->
+  <section class="milestones">
+    <div class="milestones-inner">
+      <div class="section-head">
+        <p class="eyebrow eyebrow-pink">OUR JOURNEY</p>
+        <h2 class="section-title">Milestones</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-line"></div>
+        {milestones.map((m, i) => (
+          <div class={`timeline-item${i % 2 === 0 ? ' timeline-left' : ' timeline-right'}`}>
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <span class="timeline-year">{m.year}</span>
+              <h3>{m.title}</h3>
+              <p>{m.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="cta-inner">
+      <h2>Want to Learn More?</h2>
+      <p>
+        Discover our services and see how we can help you bring your children's apparel
+        collection to life.
+      </p>
+      <div class="cta-actions">
+        <a href="/services" class="btn-white">Our Services</a>
+        <a href="/contact" class="btn-outline-white">Contact Us</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Shared utilities (scoped duplicates) */
+  .eyebrow {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .eyebrow-pink { color: var(--color-pink); }
+  .eyebrow-light { color: rgba(255, 255, 255, 0.8); }
+
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    color: var(--color-teal);
+    line-height: 1.15;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+  .section-sub {
+    color: var(--color-text-muted);
+    font-size: 1.05rem;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .section-head {
+    text-align: center;
+    margin-bottom: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .image-placeholder {
+    background: linear-gradient(135deg, #e8e2d8, #d8d0c4);
+    border: 1px dashed rgba(14, 76, 90, 0.2);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(14, 76, 90, 0.4);
+    font-size: 0.9rem;
+    font-weight: 500;
+    overflow: hidden;
+  }
+  .btn-pink,
+  .btn-white,
+  .btn-outline-white {
+    display: inline-block;
+    padding: 0.85rem 1.8rem;
+    border-radius: 999px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    border: 2px solid transparent;
+  }
+  .btn-pink {
+    background: var(--color-pink);
+    color: #fff;
+  }
+  .btn-pink:hover {
+    background: #c0697c;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(212, 121, 140, 0.35);
+  }
+  .btn-white {
+    background: #fff;
+    color: var(--color-teal);
+  }
+  .btn-white:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  .btn-outline-white {
+    border-color: rgba(255, 255, 255, 0.6);
+    color: #fff;
+  }
+  .btn-outline-white:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+  }
+
+  /* HERO */
+  .about-hero {
+    background:
+    linear-gradient(
+      rgba(14, 76, 90, 0.6)
+    ),
+    url('/images/gente.jpg');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: #fff;
+  padding: 5rem 2.5rem 4rem;
+  }
+  .about-hero-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .about-hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    line-height: 1.05;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+  }
+  .about-hero-desc {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 720px;
+  }
+
+  /* FOUNDER */
+  .founder {
+    padding: 6rem 2.5rem;
+  }
+  .founder-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .founder-photo {
+  aspect-ratio: 3 / 4;
+  border-radius: 20px;
+  position: sticky;
+  top: 100px;
+  overflow: hidden; /* Importante para que la imagen respete las esquinas redondeadas */
+  box-shadow: 0 20px 40px rgba(14, 76, 90, 0.1); /* Opcional: le da profundidad */
+}
+  /* Busca esta regla en tu <style> y déjala así */
+.founder-photo img {
+  width: 100%;           /* Intenta ocupar todo el ancho del contenedor */
+  max-width: 100%;       /* <--- ESTA ES LA LÍNEA CLAVE: impide que se desborde */
+  height: 100%;          /* Intenta ocupar todo el alto del contenedor */
+  object-fit: cover;     /* Mantiene la proporción y recorta para llenar el 3:4 */
+  display: block;        /* Elimina espacios extraños en la base */
+}
+  .founder-text p {
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+  }
+  .founder-text .btn-pink {
+    margin-top: 0.5rem;
+  }
+  .founder-quote {
+    margin-top: 2.5rem;
+    padding: 2rem 2rem 2rem 3rem;
+    background: var(--color-bg-soft);
+    border-radius: 16px;
+    position: relative;
+  }
+  .quote-mark {
+    position: absolute;
+    top: 0.3rem;
+    left: 1rem;
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--color-pink);
+  }
+  .founder-quote p {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--color-teal);
+    margin-bottom: 0.75rem;
+  }
+  .founder-quote cite {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    font-style: normal;
+  }
+
+  /* VISION / MISSION */
+  .vm {
+    padding: 0 2.5rem 6rem;
+  }
+  .vm-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .vm-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 20px rgba(14, 76, 90, 0.05);
+  }
+  .vm-card-dark {
+    background: var(--color-teal);
+    color: #fff;
+  }
+  .vm-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: var(--color-teal);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+  .vm-icon svg {
+    width: 26px;
+    height: 26px;
+    stroke-width: 1.75;
+  }
+  .vm-card-dark .vm-icon {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+  }
+  .vm-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    color: var(--color-teal);
+    margin-bottom: 0.85rem;
+  }
+  .vm-card-dark h3 { color: #fff; }
+  .vm-card p {
+    color: var(--color-text-muted);
+    font-size: 0.97rem;
+  }
+  .vm-card-dark p { color: rgba(255, 255, 255, 0.85); }
+
+  /* VALUES */
+  .values {
+    padding: 6rem 2.5rem;
+    background: var(--color-section-gray);
+  }
+  .values-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  .value-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .value-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(14, 76, 90, 0.08);
+  }
+  .value-card-dark {
+    background: var(--color-teal);
+    color: #fff;
+  }
+  .value-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: var(--color-teal);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+  }
+  .value-icon svg {
+    width: 26px;
+    height: 26px;
+    stroke-width: 1.75;
+  }
+  .value-card-dark .value-icon {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+  }
+  .value-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    color: var(--color-teal);
+    margin-bottom: 0.6rem;
+  }
+  .value-card-dark h3 { color: #fff; }
+  .value-card p {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+  .value-card-dark p { color: rgba(255, 255, 255, 0.85); }
+
+  /* MILESTONES TIMELINE */
+.milestones {
+  padding: 6rem 2.5rem;
+}
+
+.milestones-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.timeline {
+  position: relative;
+  padding: 2rem 0;
+}
+
+/* Línea central */
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(14, 76, 90, 0.15);
+  transform: translateX(-50%);
+}
+
+/* Cada item */
+.timeline-item {
+  position: relative;
+  width: 50%;
+  margin-bottom: 4rem;
+}
+
+/* Lado izquierdo */
+.timeline-left {
+  left: -5%;
+  padding-right: 3.5rem;
+}
+
+/* Lado derecho */
+.timeline-right {
+  left: 50%;
+  padding-left: 3.5rem;
+}
+
+.timeline-dot {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: var(--color-teal);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+/* Punto del lado izquierdo */
+.timeline-left .timeline-dot {
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Punto del lado derecho */
+.timeline-right .timeline-dot {
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Cards */
+.timeline-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(14, 76, 90, 0.06);
+}
+
+.timeline-year {
+  color: #d9a6b3;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+}
+
+.timeline-card h3 {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  color: var(--color-teal);
+  margin: 0.5rem 0 1rem;
+}
+
+.timeline-card p {
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+  /* CTA */
+  .cta {
+    padding: 5rem 2.5rem;
+  }
+  .cta-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, var(--color-teal) 0%, var(--color-teal-light) 100%);
+    border-radius: 24px;
+    padding: 4rem 3rem;
+    text-align: center;
+    color: #fff;
+  }
+  .cta-inner h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  .cta-inner p {
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 620px;
+    margin: 0 auto 2rem;
+    font-size: 1.05rem;
+  }
+  .cta-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 980px) {
+    .founder-inner {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    .founder-photo {
+      position: static;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .vm-inner {
+      grid-template-columns: 1fr;
+    }
+    .values-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .timeline-line {
+      left: 20px;
+    }
+    .timeline-item,
+    .timeline-left,
+    .timeline-right {
+      width: 100%;
+      margin-left: 0;
+      padding-left: 50px;
+      padding-right: 0;
+      text-align: left;
+    }
+    .timeline-left .timeline-dot,
+    .timeline-right .timeline-dot {
+      left: 13px;
+      right: auto;
+    }
+  }
+  @media (max-width: 600px) {
+    .about-hero {
+      padding: 4rem 1.25rem 3rem;
+    }
+    .founder,
+    .vm,
+    .values,
+    .milestones,
+    .cta {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+    .vm-card,
+    .founder-quote {
+      padding: 1.75rem;
+    }
+    .cta-inner {
+      padding: 3rem 1.5rem;
+    }
+  }
+</style>

@@ -1,0 +1,454 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
+---
+
+<Layout title="Login" currentPage="">
+  <section class="login-section">
+    <div class="login-card">
+      <!-- Left panel -->
+      <aside class="login-aside">
+        <div class="aside-logo">
+          <span class="aside-logo-icon"><Icon name="lucide:scissors" aria-hidden="true" /></span>
+          <span class="aside-logo-text">Handworks</span>
+        </div>
+        <h2 class="aside-title">Welcome Back</h2>
+        <p class="aside-description">
+          Access your account to manage orders, track production, and collaborate with our team on your projects.
+        </p>
+        <ul class="aside-list">
+          <li>Track order status in real-time</li>
+          <li>Access product catalogs</li>
+          <li>Manage your projects</li>
+          <li>Direct communication with team</li>
+        </ul>
+      </aside>
+
+      <!-- Right panel -->
+      <div class="login-panel">
+        <div class="tab-switch">
+          <span class="tab active">Login</span>
+          <a href="/register" class="tab">Register</a>
+        </div>
+
+        <form class="login-form" novalidate>
+          <div class="form-field">
+            <label for="login-email">Email Address</label>
+            <div class="input-wrap">
+              <span class="input-icon-left"><Icon name="lucide:mail" aria-hidden="true" /></span>
+              <input id="login-email" type="email" placeholder="you@company.com" />
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="login-password">Password</label>
+            <div class="input-wrap">
+              <span class="input-icon-left"><Icon name="lucide:lock" aria-hidden="true" /></span>
+              <input id="login-password" type="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" />
+              <button type="button" class="input-icon-right" id="toggle-password" aria-label="Show password">
+                <Icon name="lucide:eye" class="eye-show" aria-hidden="true" />
+                <Icon name="lucide:eye-off" class="eye-hide" aria-hidden="true" />
+              </button>
+            </div>
+          </div>
+
+          <div class="form-row-inline">
+            <label class="remember">
+              <input type="checkbox" />
+              <span>Remember me</span>
+            </label>
+            <a href="#" class="forgot">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="btn-primary form-submit">
+            Sign In <span class="arrow">&rarr;</span>
+          </button>
+
+          <p class="form-footer">
+            Don't have an account? <a href="/register" class="register-link">Register</a>
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <a href="/" class="back-home">&larr; Back to Home</a>
+  </section>
+</Layout>
+
+<script>
+  // Password show/hide
+  const pwToggle = document.getElementById('toggle-password');
+  const pwInput = document.getElementById('login-password') as HTMLInputElement | null;
+  if (pwToggle && pwInput) {
+    pwToggle.addEventListener('click', () => {
+      const showing = pwInput.type === 'text';
+      pwInput.type = showing ? 'password' : 'text';
+      pwToggle.setAttribute('aria-label', showing ? 'Show password' : 'Hide password');
+      pwToggle.classList.toggle('is-revealed', !showing);
+    });
+  }
+
+  // Static form — prevent reload on submit
+  const form = document.querySelector<HTMLFormElement>('.login-form');
+  form?.addEventListener('submit', (e) => e.preventDefault());
+</script>
+
+<style>
+  .login-section {
+    background: var(--color-bg);
+    padding: 4rem 2.5rem 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .login-card {
+    width: 100%;
+    max-width: 960px;
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(14, 76, 90, 0.12);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* LEFT PANEL */
+  .login-aside {
+    background: linear-gradient(135deg, var(--color-teal) 0%, var(--color-teal-light) 100%);
+    color: #fff;
+    padding: 3rem 2.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .aside-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .aside-logo-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .aside-logo-icon svg {
+    width: 22px;
+    height: 22px;
+    stroke-width: 1.75;
+  }
+
+  .aside-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    font-weight: 600;
+    line-height: 1.1;
+    color: #fff;
+  }
+
+  .aside-description {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.98rem;
+    line-height: 1.6;
+    max-width: 420px;
+  }
+
+  .aside-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .aside-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .aside-list li::before {
+    content: '\2713';
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--color-pink-soft);
+    color: var(--color-pink);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.78rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* RIGHT PANEL */
+  .login-panel {
+    padding: 3rem 2.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  /* Tabs */
+  .tab-switch {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--color-bg-soft);
+    border-radius: 12px;
+    padding: 4px;
+    gap: 4px;
+  }
+
+  .tab {
+    background: transparent;
+    border: none;
+    padding: 0.7rem 1rem;
+    border-radius: 9px;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.25s, color 0.25s;
+  }
+
+  .tab.active {
+    background: var(--color-teal);
+    color: #fff;
+  }
+
+  /* Form */
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .form-field label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  .input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .input-wrap input {
+    width: 100%;
+    background: var(--color-bg-soft);
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 0.85rem 2.75rem;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--color-text);
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  }
+
+  .input-wrap input:focus {
+    outline: none;
+    background: #fff;
+    border-color: var(--color-teal);
+    box-shadow: 0 0 0 3px rgba(14, 76, 90, 0.1);
+  }
+
+  .input-icon-left {
+    position: absolute;
+    left: 0.95rem;
+    color: var(--color-text-muted);
+    pointer-events: none;
+    line-height: 1;
+    display: inline-flex;
+  }
+  .input-icon-left svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 1.75;
+  }
+
+  .input-icon-right {
+    position: absolute;
+    right: 0.7rem;
+    background: transparent;
+    border: none;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    padding: 0.3rem;
+    border-radius: 6px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.2s;
+  }
+  .input-icon-right svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 1.75;
+  }
+  .input-icon-right .eye-hide { display: none; }
+  .input-icon-right.is-revealed .eye-show { display: none; }
+  .input-icon-right.is-revealed .eye-hide { display: inline-block; }
+
+  .input-icon-right:hover {
+    color: var(--color-teal);
+  }
+
+  /* Inline row */
+  .form-row-inline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-top: -0.25rem;
+  }
+
+  .remember {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    cursor: pointer;
+  }
+
+  .remember input {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--color-teal);
+    cursor: pointer;
+  }
+
+  .forgot {
+    font-size: 0.9rem;
+    color: var(--color-teal);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .forgot:hover {
+    text-decoration: underline;
+  }
+
+  /* Submit */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.95rem 1.8rem;
+    border-radius: 999px;
+    font-weight: 500;
+    font-size: 0.98rem;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    background: var(--color-teal);
+    color: #fff;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    font-family: var(--font-sans);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-teal-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(14, 76, 90, 0.25);
+  }
+
+  .form-submit {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .arrow {
+    display: inline-block;
+    transition: transform 0.3s;
+  }
+
+  .form-submit:hover .arrow {
+    transform: translateX(3px);
+  }
+
+  /* Footer link */
+  .form-footer {
+    text-align: center;
+    font-size: 0.92rem;
+    color: var(--color-text-muted);
+    margin-top: 0.25rem;
+  }
+
+  .register-link {
+    color: var(--color-teal);
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .register-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Back to home */
+  .back-home {
+    color: var(--color-teal);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: gap 0.3s;
+  }
+
+  .back-home:hover {
+    text-decoration: underline;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 820px) {
+    .login-card {
+      grid-template-columns: 1fr;
+    }
+    .login-aside,
+    .login-panel {
+      padding: 2.5rem 2rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .login-section {
+      padding: 2.5rem 1.25rem 4rem;
+    }
+    .login-aside,
+    .login-panel {
+      padding: 2rem 1.5rem;
+    }
+    .form-row-inline {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+  }
+</style>

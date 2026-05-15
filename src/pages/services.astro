@@ -1,0 +1,859 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
+
+const process = [
+  { num: 1, title: 'Consultation', description: 'We discuss your vision, requirements, and timeline to understand your needs.' },
+  { num: 2, title: 'Design', description: 'Our team creates designs, tech packs, and prototypes for your approval.' },
+  { num: 3, title: 'Sampling', description: 'We produce samples for review and refinement before full production.' },
+  { num: 4, title: 'Production', description: 'Full-scale manufacturing with quality control at every stage.' },
+  { num: 5, title: 'Quality Check', description: 'Rigorous testing and inspection to ensure compliance and quality.' },
+  { num: 6, title: 'Delivery', description: 'Careful packaging and timely delivery to your destination.' },
+];
+
+const expertise = [
+  { title: 'Hand Embroidery', description: 'Intricate handcrafted embroidery that adds unique character to every garment.' },
+  { title: 'Machine Embroidery', description: 'Precision machine embroidery for consistent, detailed designs at scale.' },
+  { title: 'Special Applications', description: 'Decorative details and special techniques for distinctive garments.' },
+  { title: 'Knit Materials', description: 'Expert handling of knit fabrics for comfortable, durable clothing.' },
+  { title: 'Woven Materials', description: 'Precision construction with woven fabrics for structured pieces.' },
+  { title: 'Blended Materials', description: 'Innovative combinations for optimal comfort and performance.' },
+];
+
+const team = [
+  { initials: 'AA', name: 'Ana Amaya', role: 'Customer Service' },
+  { initials: 'FB', name: 'Fernando Barrera', role: 'Inventory Management & Control' },
+  { initials: 'LG', name: 'Luis Gómez', role: 'Production Scheduling and Management' },
+  { initials: 'CC', name: 'Carolina Coreas', role: 'Patterns and Markers' },
+  { initials: 'GF', name: 'Guadalupe Flores', role: 'Prototype Development and Design' },
+  { initials: 'SM', name: 'Sara Menjivar', role: 'Industrial Safety' },
+  { initials: 'EB', name: 'Edith Bernal', role: 'Accounts Receivable' },
+  { initials: 'IE', name: 'Ingrid Escalante', role: 'Human Resources' },
+  { initials: 'AG', name: 'Alvin Gamez', role: 'Industrial Embroidery' },
+  { initials: 'RB', name: 'Reina Beltran', role: 'Hand Embroidery' },
+  { initials: 'BH', name: 'Blanca Hernandez', role: 'Supplies Relationship Management' },
+  { initials: 'AG', name: 'Anthony Gonzalez', role: 'Information Technology' },
+  { initials: 'BS', name: 'Bayron Soriano', role: 'Accounting' },
+  { initials: 'AR', name: 'Abigail Rivera', role: 'Packaging' },
+  { initials: 'PM', name: 'Patricia Menjivar', role: 'Quality Assurance and Control' },
+  { initials: 'MA', name: 'Marina Argueta', role: 'Import and Export Control' },
+  { initials: 'MP', name: 'Mony Perez', role: 'HR & Payroll Assistant'},
+  { initials: 'E', name: 'Ernesto', role: 'Maintenance' },
+];
+---
+
+<Layout title="Services" currentPage="services">
+  <!-- HERO (teal banner) -->
+  <section class="services-hero">
+    <div class="services-hero-inner">
+      <p class="eyebrow eyebrow-light">OUR SERVICES</p>
+      <h1 class="services-hero-title">What We Offer</h1>
+      <p class="services-hero-desc">
+        From first sketches to final production, we help bring your collections to life
+        with exceptional craftsmanship and care at every step.
+      </p>
+    </div>
+  </section>
+
+  <!-- DETAILED SERVICE CARDS -->
+  <section class="service-cards">
+    <div class="service-cards-inner">
+      <!-- Design & Development (full width) -->
+      <article class="svc-card svc-card-wide">
+        <div class="svc-icon"><Icon name="lucide:pencil" aria-hidden="true" /></div>
+        <div class="svc-body">
+          <h3>Design &amp; Development</h3>
+          <p>From concept to creation, we provide comprehensive design and development services to bring your vision to life.</p>
+          <ul class="svc-list">
+            <li>Concept &amp; design support</li>
+            <li>Tech pack creation</li>
+            <li>Fabric &amp; trim sourcing</li>
+            <li>Sampling &amp; prototyping</li>
+            <li>Pattern making &amp; grading</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Materials & Manufacturing (two columns) -->
+      <div class="svc-row">
+        <article class="svc-card">
+          <div class="svc-icon"><Icon name="lucide:package" aria-hidden="true" /></div>
+          <div class="svc-body">
+            <h3>Materials &amp; Sourcing</h3>
+            <p>Strategic sourcing and inventory management to ensure the right materials are always available for your production.</p>
+            <ul class="svc-list">
+              <li>Wide variety of fabrics in stock</li>
+              <li>Fabrics and trim development</li>
+              <li>Customer-specific inventory management</li>
+              <li>Quality material selection</li>
+              <li>Sustainable sourcing options</li>
+            </ul>
+            <a href="#" class="link-arrow">View Stock Fabrics Catalogue &rarr;</a>
+          </div>
+        </article>
+
+        <article class="svc-card">
+          <div class="svc-icon"><Icon name="lucide:shirt" aria-hidden="true" /></div>
+          <div class="svc-body">
+            <h3>Manufacturing</h3>
+            <p>High-end multi-style garment production with specialized expertise in children's clothing construction.</p>
+            <ul class="svc-list">
+              <li>High-end multi-style garment production</li>
+              <li>Small &amp; large production runs</li>
+              <li>Specialized children's clothing construction</li>
+              <li>Hand and machine embroidery</li>
+              <li>Knit / woven / blended materials</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+
+      <!-- Compliance & Logistics (two columns) -->
+      <div class="svc-row">
+        <article class="svc-card">
+          <div class="svc-icon"><Icon name="lucide:lock" aria-hidden="true" /></div>
+          <div class="svc-body">
+            <h3>Compliance &amp; Quality</h3>
+            <p>Rigorous quality control and compliance processes to every garment meets international standards.</p>
+            <ul class="svc-list">
+              <li>U.S. compliance expertise</li>
+              <li>Safety standards adherence</li>
+              <li>In-line &amp; final quality control</li>
+              <li>Lab testing coordination</li>
+              <li>Full traceability</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="svc-card">
+          <div class="svc-icon"><Icon name="lucide:truck" aria-hidden="true" /></div>
+          <div class="svc-body">
+            <h3>Logistics &amp; Delivery</h3>
+            <p>Efficient logistics and delivery solutions to get your products where they need to be, on time.</p>
+            <ul class="svc-list">
+              <li>Lead time management</li>
+              <li>Export &amp; documentation</li>
+              <li>Flexible shipping solutions</li>
+              <li>Supply chain coordination</li>
+              <li>Real-time tracking</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE WORK -->
+  <section class="how">
+    <div class="how-inner">
+      <div class="section-head">
+        <p class="eyebrow eyebrow-pink">OUR PROCESS</p>
+        <h2 class="section-title">How We Work</h2>
+        <p class="section-sub">
+          A streamlined process designed to deliver quality results efficiently and transparently.
+        </p>
+      </div>
+      <div class="how-grid">
+        {process.map((step) => (
+          <article class="how-card">
+            <div class="how-num">{step.num}</div>
+            <div class="how-icon"><Icon name="lucide:clipboard-list" aria-hidden="true" /></div>
+            <h3>{step.title}</h3>
+            <p>{step.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTION CAPACITY -->
+  <section class="capacity">
+    <div class="capacity-inner">
+      <div class="capacity-text">
+        <p class="eyebrow eyebrow-pink">OUR CAPABILITIES</p>
+        <h2 class="section-title">Production Capacity</h2>
+        <p>
+          Our state-of-the-art facility is equipped to handle multi-style manufacturing
+          with precision and efficiency, ensuring we meet your production needs while
+          maintaining the highest quality standards.
+        </p>
+        <div class="capacity-stats">
+          <div class="cap-stat">
+            <div class="cap-stat-label-top">
+              <span class="cap-stat-icon"><Icon name="lucide:clock" aria-hidden="true" /></span>
+              Monthly
+            </div>
+            <div class="cap-stat-num">40,000</div>
+            <div class="cap-stat-label">Garments per month</div>
+          </div>
+          <div class="cap-stat">
+            <div class="cap-stat-label-top">
+              <span class="cap-stat-icon"><Icon name="lucide:calendar" aria-hidden="true" /></span>
+              Daily
+            </div>
+            <div class="cap-stat-num">1,500-2,500</div>
+            <div class="cap-stat-label">Garments daily</div>
+          </div>
+        </div>
+        <a href="/contact" class="btn-primary">Discuss Your Project</a>
+      </div>
+      <div class="capacity-image-wrap">
+        <div class="capacity-image">
+  <img src="/images/taller.jpg" alt="Inside Handworks manufacturing facility" />
+</div>
+        <div class="capacity-badge">
+          <div class="capacity-badge-icon"><Icon name="lucide:check" aria-hidden="true" /></div>
+          <div>
+            <div class="capacity-badge-title">U.S. Compliant</div>
+            <div class="capacity-badge-sub">Full safety standards</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR EXPERTISE -->
+  <section class="expertise">
+    <div class="expertise-inner">
+      <div class="section-head">
+        <p class="eyebrow eyebrow-pink">SPECIALIZATIONS</p>
+        <h2 class="section-title">Our Expertise</h2>
+      </div>
+      <div class="expertise-grid">
+        {expertise.map((e) => (
+          <article class="exp-card">
+            <h3>{e.title}</h3>
+            <p>{e.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM (moved from About) -->
+  <section class="team">
+    <div class="team-inner">
+      <div class="section-head">
+        <p class="eyebrow eyebrow-pink">OUR TEAM</p>
+        <h2 class="section-title">Meet the People Behind Handworks</h2>
+        <p class="section-sub">
+          Our dedicated team of professionals brings passion and expertise to every
+          garment we create.
+        </p>
+      </div>
+      <div class="team-grid">
+        {team.map((t) => (
+          <article class="team-card" >
+            <div class="team-avatar">{t.initials}</div>
+            <div class="team-name">{t.name}</div>
+            <div class="team-role">{t.role}</div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="cta-inner">
+      <h2>Ready to Start Your Project?</h2>
+      <p>
+        Let's discuss how Handworks can bring your vision to life with our comprehensive
+        manufacturing services.
+      </p>
+      <div class="cta-actions">
+        <a href="/contact" class="btn-white">Request a Quote</a>
+        <a href="/products" class="btn-outline-white">View Products</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Shared utilities */
+  .eyebrow {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .eyebrow-pink { color: var(--color-pink); }
+  .eyebrow-light { color: rgba(255, 255, 255, 0.8); }
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    color: var(--color-teal);
+    line-height: 1.15;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+  .section-sub {
+    color: var(--color-text-muted);
+    font-size: 1.05rem;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .section-head {
+    text-align: center;
+    margin-bottom: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .image-placeholder {
+    background: linear-gradient(135deg, #e8e2d8, #d8d0c4);
+    border: 1px dashed rgba(14, 76, 90, 0.2);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(14, 76, 90, 0.4);
+    font-size: 0.9rem;
+    font-weight: 500;
+    overflow: hidden;
+  }
+  .btn-primary,
+  .btn-white,
+  .btn-outline-white {
+    display: inline-block;
+    padding: 0.85rem 1.8rem;
+    border-radius: 999px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    border: 2px solid transparent;
+  }
+  .btn-primary {
+    background: var(--color-teal);
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background: var(--color-teal-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(14, 76, 90, 0.25);
+  }
+  .btn-white {
+    background: #fff;
+    color: var(--color-teal);
+  }
+  .btn-white:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  .btn-outline-white {
+    border-color: rgba(255, 255, 255, 0.6);
+    color: #fff;
+  }
+  .btn-outline-white:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+  }
+  .link-arrow {
+    color: var(--color-teal);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: gap 0.3s;
+    margin-top: 0.5rem;
+  }
+  .link-arrow:hover { gap: 0.7rem; }
+
+  /* HERO */
+  .services-hero {
+    background: var(--color-teal);
+    color: #fff;
+    padding: 5rem 2.5rem 4rem;
+  }
+  .services-hero-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .services-hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    line-height: 1.05;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+  }
+  .services-hero-desc {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 720px;
+  }
+
+  /* SERVICE DETAIL CARDS */
+  .service-cards {
+    padding: 5rem 2.5rem;
+  }
+  .service-cards-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .svc-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .svc-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2.25rem;
+    box-shadow: 0 4px 20px rgba(14, 76, 90, 0.05);
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+  .svc-card-wide {
+    /* keeps same layout */
+  }
+  .svc-icon {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: var(--color-teal);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .svc-icon svg {
+    width: 26px;
+    height: 26px;
+    stroke-width: 1.75;
+  }
+  .svc-body { flex: 1; }
+  .svc-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--color-teal);
+    margin-bottom: 0.5rem;
+  }
+  .svc-card > .svc-body > p {
+    color: var(--color-text-muted);
+    font-size: 0.97rem;
+    margin-bottom: 1rem;
+  }
+  .svc-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .svc-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--color-text);
+    font-size: 0.92rem;
+  }
+  .svc-list li::before {
+    content: '\2713';
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--color-pink-soft);
+    color: var(--color-pink);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* HOW WE WORK */
+  .how {
+    padding: 6rem 2.5rem;
+    background: var(--color-section-gray);
+  }
+  .how-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .how-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .how-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .how-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(14, 76, 90, 0.08);
+  }
+  .how-num {
+    position: absolute;
+    top: -16px;
+    left: 1.5rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--color-teal);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+  .how-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--color-teal);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5rem 0 1.25rem;
+  }
+  .how-icon svg {
+    width: 22px;
+    height: 22px;
+    stroke-width: 1.75;
+  }
+  .how-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    color: var(--color-teal);
+    margin-bottom: 0.5rem;
+  }
+  .how-card p {
+    color: var(--color-text-muted);
+    font-size: 0.92rem;
+  }
+
+  /* CAPACITY */
+  .capacity {
+    padding: 6rem 2.5rem;
+  }
+  .capacity-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .capacity-text > p {
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+  }
+  .capacity-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .cap-stat {
+    background: var(--color-section-gray);
+    border-radius: 14px;
+    padding: 1.5rem;
+  }
+  .cap-stat-label-top {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    margin-bottom: 0.6rem;
+  }
+  .cap-stat-icon {
+    color: var(--color-pink);
+    display: inline-flex;
+    vertical-align: middle;
+    margin-right: 0.35rem;
+  }
+  .cap-stat-icon svg {
+    width: 16px;
+    height: 16px;
+    stroke-width: 1.75;
+  }
+  .cap-stat-num {
+    font-family: var(--font-serif);
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--color-teal);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .cap-stat-label {
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+  }
+  .capacity-image-wrap {
+    position: relative;
+    aspect-ratio: 4 / 3;
+  }
+  /* Asegura que el contenedor respete el diseño */
+  .capacity-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden; /* Corta el exceso de la imagen gigante */
+  background: var(--color-section-gray); /* Color de respaldo */
+}
+
+/* La regla para domar la imagen gigante */
+  .capacity-image img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover; /* Mantiene la proporción 4:3 definida en el wrap */
+  display: block;
+}
+  .capacity-badge {
+    position: absolute;
+    bottom: -24px;
+    left: -24px;
+    background: #fff;
+    border-radius: 14px;
+    padding: 0.9rem 1.3rem;
+    box-shadow: 0 12px 30px rgba(14, 76, 90, 0.12);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .capacity-badge-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    background: var(--color-teal);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .capacity-badge-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2.25;
+  }
+  .capacity-badge-title {
+    font-weight: 600;
+    color: var(--color-teal);
+    font-size: 0.95rem;
+  }
+  .capacity-badge-sub {
+    color: var(--color-text-muted);
+    font-size: 0.78rem;
+  }
+
+  /* EXPERTISE */
+  .expertise {
+    padding: 6rem 2.5rem;
+    background: var(--color-section-gray);
+  }
+  .expertise-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .exp-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 1.75rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .exp-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(14, 76, 90, 0.08);
+  }
+  .exp-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    color: var(--color-teal);
+    margin-bottom: 0.5rem;
+  }
+  .exp-card p {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+
+  /* TEAM */
+  .team {
+    padding: 6rem 2.5rem;
+  }
+  .team-inner {
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+  .team-grid {
+  display: grid;
+  /* Esto crea las 6 columnas iguales */
+  grid-template-columns: repeat(6, 1fr); 
+  gap: 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+  /* --- ESTADO NORMAL --- */
+.team-card {
+  background: #ffffff;
+  border-radius: 12px;
+  justify-content: center;
+  padding: 2.5rem 1.5rem;
+  aspect-ratio: 1\1;
+  text-align: center;
+  transition: all 0.3s ease; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid #f0f0f0; /* Un borde suave ayuda a definir la tarjeta blanca */
+}
+
+.team-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #e5edf0; /* El color azul clarito de fondo */
+  color: #0e4c5a;      /* El color de las letras */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.team-name {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 600;
+  color: #0e4c5a; /* Cambié esto a azul petróleo para que combine con tu imagen 1 */
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.team-role {
+  font-family: 'Inter', sans-serif;
+  color: #666666;
+  font-size: 0.85rem;
+  transition: color 0.3s ease;
+}
+
+/* --- EL HOVER (EL CAMBIO AL PASAR EL MOUSE) --- */
+
+.team-card:hover {
+  background: #0e4c5a; /* Azul petróleo de fondo */
+  transform: translateY(-5px);
+}
+
+/* Cuando el mouse está sobre la tarjeta, cambiamos lo de adentro a blanco */
+.team-card:hover .team-avatar {
+  background: rgba(255, 255, 255, 0.2); /* Blanco transparente */
+  color: #ffffff;
+}
+
+.team-card:hover .team-name {
+  color: #ffffff;
+}
+
+.team-card:hover .team-role {
+  color: rgba(255, 255, 255, 0.8); /* Un blanco un poco más suave para el rol */
+}
+  /* CTA */
+  .cta {
+    padding: 5rem 2.5rem;
+  }
+  .cta-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, var(--color-teal) 0%, var(--color-teal-light) 100%);
+    border-radius: 24px;
+    padding: 4rem 3rem;
+    text-align: center;
+    color: #fff;
+  }
+  .cta-inner h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  .cta-inner p {
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 620px;
+    margin: 0 auto 2rem;
+    font-size: 1.05rem;
+  }
+  .cta-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1100px) {
+    .team-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .how-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .expertise-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 980px) {
+    .svc-row,
+    .capacity-inner {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+  @media (max-width: 700px) {
+    .team-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .how-grid,
+    .expertise-grid,
+    .capacity-stats {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 600px) {
+    .services-hero {
+      padding: 4rem 1.25rem 3rem;
+    }
+    .service-cards,
+    .how,
+    .capacity,
+    .expertise,
+    .team,
+    .cta {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+    .svc-card {
+      padding: 1.75rem;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .cta-inner {
+      padding: 3rem 1.5rem;
+    }
+  }
+</style>

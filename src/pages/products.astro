@@ -1,0 +1,771 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
+
+const childrenCollections = [
+  {
+    title: 'Newborn & Infant',
+    description: 'Delicate, comfortable clothing for the littlest ones, designed with safety and softness in mind.',
+    tags: ['Onesies', 'Sleepers', 'Rompers', 'Bodysuits', 'Gowns'],
+    image: 'images/newborn.jpg',
+  },
+  {
+    title: 'Boys Collection',
+    description: 'Classic and contemporary styles for boys, from casual everyday wear to special occasion outfits.',
+    tags: ['Dress Shirts','Polo Shirts', 'T-shirts', 'Dress Pants', 'Shorts', 'Shortalls', 'Longalls', 'Jon-Jons', 'Bubbles', 'Swimwear', 'Matching Sets'],
+    image: 'images/boy.jpg',
+  },
+  {
+    title: 'Girls Collection',
+    description: 'Beautiful, feminine designs for girls featuring delicate details and comfortable fits.',
+    tags: ['Bubbles', 'Dresses', 'Shorts', 'Skirts', 'Skorts', 'Bloomers', 'Overalls', 'Jumpers', 'Rompers', 'Matching Sets'],
+    image: 'images/girl.jpg',
+  },
+];
+
+const additionalCollections = [
+  {
+    title: "Women's Collection",
+    tags: ['Dresses', 'Pants', 'Blouses', 'Shirts', 'Shorts', 'Swimwear'],
+  },
+  {
+    title: "Men's Collection",
+    tags: ['Dress Shirts', 'Polo Shirts', 'T-shirts', 'Dress Pants', 'Pants', 'Shorts', 'Swimwear'],
+  },
+];
+---
+
+<Layout title="Products" currentPage="products">
+  <!-- HERO -->
+  <section class="products-hero">
+    <div class="products-hero-inner">
+      <p class="eyebrow eyebrow-light">OUR PRODUCTS</p>
+      <h1 class="products-hero-title">Premium Collections</h1>
+      <p class="products-hero-desc">
+        Our production lines are equipped to handle multi-style manufacturing, including
+        garments with special applications and decorative details.
+      </p>
+    </div>
+  </section>
+
+  <!-- CHILDREN'S COLLECTIONS CAROUSEL -->
+  <section class="children-coll">
+    <div class="children-coll-inner">
+      <div class="coll-head">
+        <div>
+          <p class="eyebrow eyebrow-pink">CATEGORIES</p>
+          <h2 class="section-title">Children's Collections</h2>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" data-dir="prev" aria-label="Previous"><Icon name="lucide:chevron-left" aria-hidden="true" /></button>
+          <button class="carousel-btn" data-dir="next" aria-label="Next"><Icon name="lucide:chevron-right" aria-hidden="true" /></button>
+        </div>
+      </div>
+
+      <div class="carousel">
+        <div class="carousel-track">
+          {childrenCollections.map((c) => (
+            <article class="coll-slide">
+              <div class="coll-image">
+  <img src={c.image} alt={c.title} loading="lazy" />
+</div>
+              <div class="coll-content">
+                <h3>{c.title}</h3>
+                <p>{c.description}</p>
+                <div class="coll-includes-label">Includes:</div>
+                <div class="coll-tags">
+                  {c.tags.map((t) => <span class="tag">{t}</span>)}
+                </div>
+                <a href="/contact" class="link-arrow">Request Information &rarr;</a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div class="carousel-dots">
+        {childrenCollections.map((_, i) => (
+          <button class={`dot${i === 0 ? ' active' : ''}`} data-index={i} aria-label={`Slide ${i + 1}`}></button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ADDITIONAL COLLECTIONS -->
+  <section class="additional">
+    <div class="additional-inner">
+      <div class="section-head">
+        <p class="eyebrow eyebrow-pink">EXTENDED RANGE</p>
+        <h2 class="section-title">Additional Collections</h2>
+      </div>
+      <div class="additional-grid">
+        {additionalCollections.map((c) => (
+          <article class="add-card">
+            <div class="add-icon"><Icon name="lucide:shirt" aria-hidden="true" /></div>
+            <h3>{c.title}</h3>
+            <div class="coll-tags">
+              {c.tags.map((t) => <span class="tag">{t}</span>)}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- EMBROIDERY EXPERTISE -->
+  <section class="embroidery">
+    <div class="embroidery-inner">
+      <div class="section-head">
+        <p class="eyebrow eyebrow-pink">SPECIALIZATION</p>
+        <h2 class="section-title">Embroidery Expertise</h2>
+        <p class="section-sub">
+          Our signature embroidery services add unique character and premium finishing to every garment.
+        </p>
+      </div>
+      <div class="embroidery-grid">
+        <article class="emb-card">
+          <div class="emb-body">
+            <div class="emb-icon"><Icon name="lucide:sparkles" aria-hidden="true" /></div>
+            <h3>Industrial Embroidery</h3>
+            <p>Precision machine embroidery for consistent, detailed designs at production scale.</p>
+            <ul class="emb-list">
+              <li>High-volume capability</li>
+              <li>Consistent quality</li>
+              <li>Complex designs</li>
+              <li>Multiple thread colors</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="emb-card emb-card-split">
+          <div class="emb-body">
+            <div class="emb-icon"><Icon name="lucide:sparkles" aria-hidden="true" /></div>
+            <h3>Hand Embroidery</h3>
+            <p>Artisanal hand-stitched embroidery that adds unique character and luxury to each piece.</p>
+          </div>
+          <div class="emb-bottom">
+            <ul class="emb-list emb-list-light">
+              <li>Unique detailing</li>
+              <li>Artisan craftsmanship</li>
+              <li>Premium finish</li>
+              <li>Custom designs</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTION SCALE -->
+  <section class="scale">
+    <div class="scale-inner">
+      <div class="scale-text">
+        <p class="eyebrow eyebrow-light">CAPACITY</p>
+        <h2 class="scale-title">Production Scale</h2>
+        <p>
+          Our facility is equipped to handle both boutique runs and large-scale production
+          with the same attention to quality.
+        </p>
+      </div>
+      <div class="scale-stats">
+        <div class="scale-stat">
+          <div class="scale-stat-icon"><Icon name="lucide:clock" aria-hidden="true" /></div>
+          <div class="scale-stat-num">40,000</div>
+          <div class="scale-stat-label">Garments per month</div>
+        </div>
+        <div class="scale-stat">
+          <div class="scale-stat-icon"><Icon name="lucide:sparkles" aria-hidden="true" /></div>
+          <div class="scale-stat-num">1,500-2,500</div>
+          <div class="scale-stat-label">Garments daily</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATALOG CTA -->
+  <section class="catalog">
+    <div class="catalog-inner">
+      <h2>View Our Complete Catalog</h2>
+      <p>
+        Get access to our full product catalog with detailed specifications, fabric options, and
+        customization possibilities.
+      </p>
+      <div class="catalog-actions">
+        <a href="/contact" class="btn-primary">Request Catalog &rarr;</a>
+        <a href="/contact" class="btn-outline">Contact Us</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.children-coll').forEach((wrapper) => {
+    const track = wrapper.querySelector<HTMLElement>('.carousel-track');
+    const slides = wrapper.querySelectorAll<HTMLElement>('.coll-slide');
+    const dots = wrapper.querySelectorAll<HTMLElement>('.dot');
+    const prevBtn = wrapper.querySelector<HTMLElement>('[data-dir="prev"]');
+    const nextBtn = wrapper.querySelector<HTMLElement>('[data-dir="next"]');
+    if (!track || slides.length === 0) return;
+    let current = 0;
+
+    const getSlideWidth = () => slides[0].getBoundingClientRect().width;
+
+    const go = (i: number) => {
+      current = (i + slides.length) % slides.length;
+      track.style.transform = `translateX(-${current * getSlideWidth()}px)`;
+      dots.forEach((d, idx) => d.classList.toggle('active', idx === current));
+    };
+
+    prevBtn?.addEventListener('click', () => go(current - 1));
+    nextBtn?.addEventListener('click', () => go(current + 1));
+    dots.forEach((d, idx) => d.addEventListener('click', () => go(idx)));
+    window.addEventListener('resize', () => go(current));
+  });
+</script>
+
+<style>
+  /* Shared utilities */
+  .eyebrow {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .eyebrow-pink { color: var(--color-pink); }
+  .eyebrow-light { color: rgba(255, 255, 255, 0.8); }
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    color: var(--color-teal);
+    line-height: 1.15;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .section-sub {
+    color: var(--color-text-muted);
+    font-size: 1.05rem;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .section-head {
+    text-align: center;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .image-placeholder {
+    background: linear-gradient(135deg, #e8e2d8, #d8d0c4);
+    border: 1px dashed rgba(14, 76, 90, 0.2);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(14, 76, 90, 0.4);
+    font-size: 0.9rem;
+    font-weight: 500;
+    overflow: hidden;
+  }
+  .btn-primary,
+  .btn-outline {
+    display: inline-block;
+    padding: 0.85rem 1.8rem;
+    border-radius: 999px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s;
+    border: 2px solid transparent;
+  }
+  .btn-primary {
+    background: var(--color-teal);
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background: var(--color-teal-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(14, 76, 90, 0.25);
+  }
+  .btn-outline {
+    border-color: var(--color-teal);
+    color: var(--color-teal);
+  }
+  .btn-outline:hover {
+    background: var(--color-teal);
+    color: #fff;
+  }
+  .link-arrow {
+    color: var(--color-teal);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: gap 0.3s;
+    margin-top: 0.5rem;
+  }
+  .link-arrow:hover { gap: 0.7rem; }
+  .tag {
+    display: inline-block;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    background: #fff;
+    color: var(--color-teal);
+    border: 1px solid rgba(14, 76, 90, 0.12);
+    font-size: 0.82rem;
+    font-weight: 500;
+  }
+
+  /* HERO */
+  .products-hero {
+    background: var(--color-teal);
+    color: #fff;
+    padding: 5rem 2.5rem 4rem;
+  }
+  .products-hero-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .products-hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    line-height: 1.05;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+  }
+  .products-hero-desc {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 720px;
+  }
+
+  /* CHILDREN'S COLLECTIONS */
+  .children-coll {
+    padding: 5rem 2.5rem;
+    overflow: hidden;
+  }
+  .children-coll-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .coll-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .coll-head .section-title {
+    margin-bottom: 0;
+  }
+  .carousel-controls {
+    display: flex;
+    gap: 0.75rem;
+  }
+  .carousel-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(14, 76, 90, 0.25);
+    background: transparent;
+    color: var(--color-teal);
+    cursor: pointer;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s, color 0.3s, border-color 0.3s;
+  }
+  .carousel-btn:hover {
+    background: var(--color-teal);
+    color: #fff;
+    border-color: var(--color-teal);
+  }
+  .carousel-btn svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2;
+  }
+
+  .carousel {
+  overflow: hidden;
+  width: 100%;
+  border-radius: 24px;
+}
+
+.carousel-track {
+  display: flex;
+  width: 100%; /* Importante */
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+  .coll-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  min-width: 0;
+  background: var(--color-bg-soft);
+  border-radius: 24px;
+  padding: 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr; 
+  gap: 3rem;
+  align-items: center;
+  /* CAMBIO: Quitamos el overflow hidden para ver si algo se sale, 
+     o lo dejamos si queremos recortar, pero lo ideal es controlar el contenido */
+  min-height: 500px; /* Asegura una altura base uniforme */
+}
+  /* Localiza tu clase .coll-image y asegúrate de que tenga esto */
+.coll-image {
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  overflow: hidden; /* Esto es vital para que la imagen respete las esquinas redondeadas */
+  background: var(--color-section-gray); /* Color de fondo mientras carga */
+}
+
+/* Añade esta nueva regla para la etiqueta img */
+.coll-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Hace que la imagen cubra el área sin deformarse */
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+/* Opcional: un pequeño efecto de zoom al pasar el mouse */
+.coll-slide:hover .coll-image img {
+  transform: scale(1.05);
+}
+  .coll-content {
+    min-width: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 2rem;
+  }
+  .coll-content h3 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    color: var(--color-teal);
+    margin-bottom: 0.85rem;
+    overflow-wrap: break-word;
+  }
+  .coll-content > p {
+    color: var(--color-text-muted);
+    margin-bottom: 1.25rem;
+    overflow-wrap: break-word;
+    max-width: 100%;       
+    line-height: 1.6;  
+    max-width: 90%;    
+    display: block;
+  }
+  .coll-includes-label {
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+  }
+  .coll-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  max-width: 100%;
+  /* AÑADE ESTO para que los tags no estiren la tarjeta más de lo deseado */
+  max-height: 120px; 
+  overflow-y: auto; /* Permite scroll interno si hay demasiados tags */
+  padding-right: 5px;
+}
+
+/* Estilo para el scrollbar de los tags (opcional para que se vea limpio) */
+.coll-tags::-webkit-scrollbar {
+  width: 4px;
+}
+.coll-tags::-webkit-scrollbar-thumb {
+  background: rgba(14, 76, 90, 0.1);
+  border-radius: 10px;
+}
+  .coll-content .link-arrow {
+    margin-top: 0.5rem;
+  }
+
+  .carousel-dots {
+    display: flex;
+    gap: 0.6rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(14, 76, 90, 0.25);
+    cursor: pointer;
+    transition: width 0.3s, background 0.3s;
+    padding: 0;
+  }
+  .dot.active {
+    background: var(--color-teal);
+    width: 28px;
+    border-radius: 999px;
+  }
+
+  /* ADDITIONAL COLLECTIONS */
+  .additional {
+    padding: 5rem 2.5rem;
+    background: var(--color-section-gray);
+  }
+  .additional-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .additional-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .add-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2.25rem;
+    box-shadow: 0 4px 20px rgba(14, 76, 90, 0.04);
+  }
+  .add-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: var(--color-teal);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+  .add-icon svg {
+    width: 26px;
+    height: 26px;
+    stroke-width: 1.75;
+  }
+  .add-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--color-teal);
+    margin-bottom: 1rem;
+  }
+
+  /* EMBROIDERY */
+  .embroidery {
+    padding: 5rem 2.5rem;
+  }
+  .embroidery-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .embroidery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .emb-card {
+    background: var(--color-bg-soft);
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .emb-body {
+    padding: 2.25rem;
+    flex: 1;
+  }
+  .emb-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: var(--color-teal);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+  .emb-icon svg {
+    width: 26px;
+    height: 26px;
+    stroke-width: 1.75;
+  }
+  .emb-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--color-teal);
+    margin-bottom: 0.6rem;
+  }
+  .emb-body > p {
+    color: var(--color-text-muted);
+    font-size: 0.97rem;
+    margin-bottom: 1rem;
+  }
+  .emb-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .emb-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--color-text);
+    font-size: 0.92rem;
+  }
+  .emb-list li::before {
+    content: '\2022';
+    color: var(--color-pink);
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+  .emb-bottom {
+    background: var(--color-teal);
+    padding: 1.75rem 2.25rem;
+  }
+  .emb-list-light li {
+    color: rgba(255, 255, 255, 0.95);
+  }
+  .emb-list-light li::before {
+    color: var(--color-pink-light);
+  }
+
+  /* PRODUCTION SCALE */
+  .scale {
+    background: var(--color-teal);
+    color: #fff;
+    padding: 5rem 2.5rem;
+  }
+  .scale-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .scale-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    line-height: 1.1;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .scale-text > p {
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 480px;
+  }
+  .scale-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+  .scale-stat {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 1.75rem;
+  }
+  .scale-stat-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-pink-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  .scale-stat-num {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .scale-stat-label {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.9rem;
+  }
+
+  /* CATALOG */
+  .catalog {
+    padding: 5rem 2.5rem;
+  }
+  .catalog-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: var(--color-bg-soft);
+    border-radius: 24px;
+    padding: 4rem 3rem;
+    text-align: center;
+  }
+  .catalog-inner h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    color: var(--color-teal);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  .catalog-inner > p {
+    color: var(--color-text-muted);
+    max-width: 620px;
+    margin: 0 auto 2rem;
+    font-size: 1.05rem;
+  }
+  .catalog-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 980px) {
+    .coll-slide,
+    .scale-inner {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .additional-grid,
+    .embroidery-grid {
+      grid-template-columns: 1fr;
+    }
+    .scale-stats {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 600px) {
+    .products-hero {
+      padding: 4rem 1.25rem 3rem;
+    }
+    .children-coll,
+    .additional,
+    .embroidery,
+    .scale,
+    .catalog {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+    .coll-slide {
+      padding: 1.75rem;
+    }
+    .coll-head {
+      align-items: flex-start;
+    }
+    .scale-stats {
+      grid-template-columns: 1fr;
+    }
+    .catalog-inner {
+      padding: 3rem 1.5rem;
+    }
+  }
+</style>
