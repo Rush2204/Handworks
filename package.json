@@ -12,6 +12,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/node": "^10.1.1",
     "@astrojs/partytown": "^2.1.7",
     "@astrojs/react": "^5.0.4",
     "@iconify-json/lucide": "^1.2.106",
@@ -19,7 +20,11 @@
     "@types/react-dom": "^19.2.3",
     "astro": "^6.2.2",
     "astro-icon": "^1.1.5",
+    "nodemailer": "^8.0.7",
     "react": "^19.2.5",
     "react-dom": "^19.2.5"
+  },
+  "devDependencies": {
+    "@types/nodemailer": "^8.0.0"
   }
 }

@@ -23,45 +23,49 @@ import { Icon } from 'astro-icon/components';
       <div class="contact-form-card">
         <h2 class="form-title">Request a Quote</h2>
         <p class="form-sub">Tell us about your project and we'll get back to you within 24 hours.</p>
-        <form class="contact-form">
+        <form class="contact-form" id="quote-form" novalidate>
           <div class="form-row">
             <div class="form-field">
               <label for="full-name">Full Name *</label>
-              <input id="full-name" type="text" placeholder="John Doe" required />
+              <input id="full-name" name="fullName" type="text" placeholder="John Doe" required />
             </div>
             <div class="form-field">
               <label for="email">Email Address *</label>
-              <input id="email" type="email" placeholder="john@company.com" required />
+              <input id="email" name="email" type="email" placeholder="john@company.com" required />
             </div>
           </div>
           <div class="form-row">
             <div class="form-field">
               <label for="company">Company Name</label>
-              <input id="company" type="text" placeholder="Your Company" />
+              <input id="company" name="company" type="text" placeholder="Your Company" />
             </div>
             <div class="form-field">
               <label for="phone">Phone Number</label>
-              <input id="phone" type="tel" placeholder="+1 (555) 000-0000" />
+              <input id="phone" name="phone" type="tel" placeholder="+1 (555) 000-0000" />
             </div>
           </div>
           <div class="form-field">
             <label for="inquiry">Inquiry Type *</label>
-            <select id="inquiry" required>
+            <select id="inquiry" name="inquiryType" required>
               <option value="" disabled selected>Select inquiry type</option>
-              <option value="quote">Request a Quote</option>
-              <option value="tour">Schedule a Tour</option>
-              <option value="catalog">View Catalog</option>
-              <option value="samples">Sample Request</option>
-              <option value="other">Other</option>
+              <option value="Request a Quote">Request a Quote</option>
+              <option value="Schedule a Tour">Schedule a Tour</option>
+              <option value="View Catalog">View Catalog</option>
+              <option value="Sample Request">Sample Request</option>
+              <option value="Other">Other</option>
             </select>
           </div>
           <div class="form-field">
             <label for="message">Message *</label>
-            <textarea id="message" rows="5" placeholder="Tell us about your project, requirements, and timeline..." required></textarea>
+            <textarea id="message" name="message" rows="5" placeholder="Tell us about your project, requirements, and timeline..." required></textarea>
           </div>
-          <button type="submit" class="btn-primary form-submit">
+
+          <!-- Status banner shown after submission attempts. role="status" makes screen readers announce changes. -->
+          <div id="quote-status" class="form-status" role="status" aria-live="polite" hidden></div>
+
+          <button type="submit" class="btn-primary form-submit" id="quote-submit">
             <Icon name="lucide:send" class="submit-icon" aria-hidden="true" />
-            Send Message
+            <span class="submit-label">Send Message</span>
           </button>
         </form>
       </div>
@@ -173,6 +177,79 @@ import { Icon } from 'astro-icon/components';
       </div>
     </div>
   </section>
+
+  <!--
+    Contact form submission handler.
+    - Hijacks the default form submit so we POST JSON to /api/send-quote.
+    - Disables the button while in flight to prevent duplicate sends.
+    - Renders a success or error banner above the submit button.
+  -->
+  <script>
+    const form = document.getElementById('quote-form') as HTMLFormElement | null;
+    const status = document.getElementById('quote-status') as HTMLDivElement | null;
+    const button = document.getElementById('quote-submit') as HTMLButtonElement | null;
+
+    if (form && status && button) {
+      const label = button.querySelector('.submit-label') as HTMLSpanElement | null;
+      const defaultLabel = label?.textContent ?? 'Send Message';
+
+      const showStatus = (kind: 'success' | 'error', text: string) => {
+        status.hidden = false;
+        status.dataset.kind = kind;
+        status.textContent = text;
+      };
+
+      const hideStatus = () => {
+        status.hidden = true;
+        status.removeAttribute('data-kind');
+        status.textContent = '';
+      };
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        hideStatus();
+
+        // Browser-level required-field check before we even hit the network.
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          showStatus('error', 'Please fill in all required fields.');
+          return;
+        }
+
+        // Collect form values via FormData (uses the `name` attributes).
+        const data = Object.fromEntries(new FormData(form).entries());
+
+        button.disabled = true;
+        if (label) label.textContent = 'Sending…';
+
+        try {
+          const res = await fetch('/api/send-quote', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+          });
+
+          const payload = await res.json().catch(() => ({}));
+
+          if (res.ok && payload.ok) {
+            showStatus('success', "Thanks! Your message was sent — we'll be in touch within 24 hours.");
+            form.reset();
+          } else {
+            const message =
+              (payload && typeof payload.error === 'string' && payload.error) ||
+              'Something went wrong while sending your message. Please try again.';
+            showStatus('error', message);
+          }
+        } catch (err) {
+          // Network error, server down, etc.
+          showStatus('error', 'Unable to reach the server. Check your connection and try again.');
+        } finally {
+          button.disabled = false;
+          if (label) label.textContent = defaultLabel;
+        }
+      });
+    }
+  </script>
 </Layout>
 
 <style>
@@ -350,6 +427,31 @@ import { Icon } from 'astro-icon/components';
   .form-submit {
     width: 100%;
     margin-top: 0.5rem;
+  }
+  .form-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* Success / error banner shown after form submission */
+  .form-status {
+    padding: 0.85rem 1rem;
+    border-radius: 10px;
+    font-size: 0.92rem;
+    line-height: 1.45;
+    border: 1px solid transparent;
+  }
+  .form-status[data-kind='success'] {
+    background: #e7f4ee;
+    color: #0f5132;
+    border-color: #b9dfc8;
+  }
+  .form-status[data-kind='error'] {
+    background: #fdecec;
+    color: #842029;
+    border-color: #f3c2c2;
   }
   .submit-icon {
     width: 18px;
